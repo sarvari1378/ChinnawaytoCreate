@@ -25,9 +25,9 @@ jobs:
       - name: Install dependencies
         run: npm install -g javascript-obfuscator
 
-      - name: Obfuscate code
+      - name: Obfuscate code China Way
         run: |
-          javascript-obfuscator 明文源码.js --output _worker.js \
+          javascript-obfuscator 明文源码.js --output China_worker.js \
           --compact true \
           --control-flow-flattening true \
           --control-flow-flattening-threshold 1 \
@@ -41,6 +41,41 @@ jobs:
           --transform-object-keys true \
           --unicode-escape-sequence true
 
+
+      - name: Obfuscate code Vahid
+        run: |
+          javascript-obfuscator Vahid.js --output Vahid_worker.js \
+          --compact true \
+          --control-flow-flattening true \
+          --control-flow-flattening-threshold 1 \
+          --dead-code-injection true \
+          --dead-code-injection-threshold 1 \
+          --identifier-names-generator hexadecimal \
+          --rename-globals true \
+          --string-array true \
+          --string-array-encoding 'rc4' \
+          --string-array-threshold 1 \
+          --transform-object-keys true \
+          --unicode-escape-sequence true
+
+
+      - name: Obfuscate code BPB
+        run: |
+          javascript-obfuscator BPB.js --output BPB_worker.js \
+          --compact true \
+          --control-flow-flattening true \
+          --control-flow-flattening-threshold 1 \
+          --dead-code-injection true \
+          --dead-code-injection-threshold 1 \
+          --identifier-names-generator hexadecimal \
+          --rename-globals true \
+          --string-array true \
+          --string-array-encoding 'rc4' \
+          --string-array-threshold 1 \
+          --transform-object-keys true \
+          --unicode-escape-sequence true
+
+          
       - name: Commit changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
